@@ -2,7 +2,9 @@ const request = require('./req');
 const { JSDOM } = require('jsdom');
 const fs = require('fs');
 
-let data = require('./data');
+fs.mkdir('data', (err) =>{});
+
+let data = fs.existsSync('./data/data') ? require('./data/data') : [];
 let __suppliers = {};
 async function main() {
     let rsp = await request.get('http://www.zycg.gov.cn/td_xxlcpxygh/platform')
